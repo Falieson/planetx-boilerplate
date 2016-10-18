@@ -1,0 +1,10 @@
+node_modules/
+.meteor/local/
+.meteor/dev_bundle/
+meteor_packages
+settings.json
+.trash/
+.DS_Store
+npm-debug.log
+yarn-error.log
+yarn.lock
