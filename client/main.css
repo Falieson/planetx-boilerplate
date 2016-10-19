@@ -1,7 +1,9 @@
+html,
 body {
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   margin: 0 10px;
-  background-color: #3faeed;
+  background-color: rgb(34, 34, 34);
   color: rgb(245, 242, 233);
 }
 
@@ -17,4 +19,28 @@ a {
 a:hover {
   color: rgb(11, 112, 6);
   text-decoration: none;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  margin: 0 0;
+}
+
+.content {
+  position: fixed;
+  width: 100%;
+  top: 40px;
+}
+
+.footer {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 0;
 }
