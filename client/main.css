@@ -1,10 +1,20 @@
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0 10px;
-  background-color: #393636;
+  background-color: #3faeed;
+  color: rgb(245, 242, 233);
 }
 
 h1 {
   margin: 20px 20px;
   color: rgb(225, 224, 255)
+}
+
+a {
+  color: rgb(24, 217, 14);
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(11, 112, 6);
+  text-decoration: none;
 }

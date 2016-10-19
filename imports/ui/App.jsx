@@ -1,8 +1,12 @@
 import React from 'react';
 
+import Layout from './layouts/';
+
 // App component - represents the whole app
-export default function App() {
+export default function App(props) {
   return (
-    <h1>Hello World</h1>
+    <Layout>
+      {props.children}
+    </Layout>
   );
 }

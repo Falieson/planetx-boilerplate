@@ -12,7 +12,7 @@ $ meteor
 "Hello World"
 
 # Modules / Features #
-- [ ] Home Page (Header, Footer, Content)
+- [x] Home Page (Header, Footer, Content)
 - [ ] Accounts
   - [ ] Register
   - [ ] Login
@@ -26,7 +26,7 @@ $ meteor
 
 # Config / Libraries #
 - [ ] Layout
-- [ ] React-Router
+- [x] React-Router
 - [ ] Material-UI
 - [ ] Less
 - [x] Webpack
