@@ -9,7 +9,8 @@ $ meteor
 ```
 
 # CURRENT OUTPUT #
-"Hello World"
+- Routed Layout
+- Tabs Login/Register
 
 # Modules / Features #
 - [x] Home Page (Header, Footer, Content)

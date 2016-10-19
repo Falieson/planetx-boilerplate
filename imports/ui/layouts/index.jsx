@@ -8,7 +8,7 @@ import Col from 'muicss/lib/react/col';
 import Header from './header';
 import Footer from './footer';
 
-export default function standardLayout(props) {
+export default function appLayout(props) {
   return (
     <Col md="12">
       <div className="header"><Row><Header /></Row></div>

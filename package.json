@@ -10,6 +10,8 @@
   "dependencies": {
     "babel-polyfill": "^6.16.0",
     "babel-preset-es2017": "^6.16.0",
+    "core-decorators": "^0.13.0",
+    "lodash": "^4.16.4",
     "material-ui": "^0.16.0",
     "meteor-node-stubs": "~0.2.0",
     "muicss": "^0.9.1",
