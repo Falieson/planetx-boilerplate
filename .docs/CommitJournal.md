@@ -1,3 +1,8 @@
+# 5) Account Login Password Field and Submit Button - REDUX
+Message: `5) Create Password field and Validation as well as placeholder SubmitBtn`
+- A) `Submit Button doesn't do anything yet`
+- B) `Password and Username/Email validators come from the helper file`
+
 # 4) Account Login Username Field - REDUX
 Message: `4) Setup Redux(Actions/Redux/Store) and create Username field`
 - A) `Store brought into client/main.jsx`

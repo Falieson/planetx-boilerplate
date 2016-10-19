@@ -32,32 +32,35 @@ export function updateAccountUsernameInvalid(username) {
   };
 }
 
-// export const ACCOUNT_UPDATE_EMAIL             = 'ACCOUNT_UPDATE_EMAIL';
-// export const ACCOUNT_UPDATE_PASSWORD          = 'ACCOUNT_UPDATE_PASSWORD';
+/**
+ * ACCOUNT_UPDATE_PASSWORD & PASSWORD_INVALID
+ * update the store with these states
+ */
+export const ACCOUNT_UPDATE_PASSWORD = 'ACCOUNT_UPDATE_PASSWORD';
+export const ACCOUNT_UPDATE_PASSWORD_INVALID = 'ACCOUNT_UPDATE_PASSWORD_INVALID';
 
-// export function updateAccountEmail(email) {
-//   return dispatch => {
-//     dispatch( updateEmail(email) );
-//   }
-// }
-// function updateEmail(email) {
-//   return {
-//     type:       ACCOUNT_UPDATE_EMAIL,
-//     email,
-//     valid:      true,
-//     updatedAt:  Date.now(),
-//   }
-// }
-// export function updateAccountPassword(password) {
-//   return dispatch => {
-//     dispatch( updatePassword(password) );
-//   }
-// }
-// function updatePassword(password) {
-//   return {
-//     type:       ACCOUNT_UPDATE_PASSWORD,
-//     password,
-//     valid:      true,
-//     updatedAt:  Date.now(),
-//   }
-// }
+function updatePassword(password) {
+  return {
+    type: ACCOUNT_UPDATE_PASSWORD,
+    password,
+    valid: true,
+    updatedAt: Date.now(),
+  };
+}
+export function updateAccountPassword(password) {
+  return (dispatch) => {
+    dispatch(updatePassword(password));
+  };
+}
+function invalidPassword() {
+  return {
+    type: ACCOUNT_UPDATE_PASSWORD_INVALID,
+    valid: false,
+    updatedAt: Date.now(),
+  };
+}
+export function updateAccountPasswordInvalid() {
+  return (dispatch) => {
+    dispatch(invalidPassword());
+  };
+}

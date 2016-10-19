@@ -7,10 +7,10 @@ import TextField from 'material-ui/TextField';
 import { slow, inputStyles, regexes } from '../helpers';
 
 // Actions
-import { updateAccountUsername, updateAccountUsernameInvalid } from '../../actions/account';
+import { updateAccountPassword, updateAccountPasswordInvalid } from '../../actions/account';
 
 @autobind
-class accountUsername extends Component {
+class accountPassword extends Component {
   constructor() {
     super();
 
@@ -20,65 +20,63 @@ class accountUsername extends Component {
       error: '',
     };
   }
-  handleChangedUsername(event) {
+  handleChangedPassword(event) {
     event.preventDefault();
     const { dispatch } = this.props;
 
-    const minLength = 8;
-    const maxLength = 20;
+    const minLength = 12;
+    const maxLength = 32;
     const text = event.target.value;
 
     let isValid = true;
     let error = '';
 
-    const isEmail = text.indexOf('@') >= 0;
-    const usernameLength = text.length >= minLength && text.length <= maxLength;
+    const passwordLength = text.length >= minLength && text.length <= maxLength;
 
-    if(isEmail || usernameLength) {
-      const regex = isEmail ? regexes.email : regexes.username;
+    console.log('Length: ', text.length);
+
+    if(passwordLength) {
+      const regex = regexes.password;
       isValid = regex.test(text);
 
       if(isValid) {
         // SUCCESS
         //
-        dispatch(slow(updateAccountUsername(text)));
+        dispatch(slow(updateAccountPassword(text)));
       } else {
         // FAIL
-        dispatch(slow(updateAccountUsernameInvalid(text)));
+        dispatch(slow(updateAccountPasswordInvalid(text)));
 
-        error = isEmail ? regexes.emailError : regexes.usernameError;
+        error = regexes.passwordError;
       }
     } else if(text.length === 0) {
       // FAIL
       isValid = false;
-      dispatch(slow(updateAccountUsernameInvalid(text)));
+      dispatch(slow(updateAccountPasswordInvalid(text)));
 
       error = '';
     } else if(text.length < minLength) {
       // FAIL
       isValid = false;
-      dispatch(slow(updateAccountUsernameInvalid(text)));
+      dispatch(slow(updateAccountPasswordInvalid(text)));
 
       error = `At least ${minLength} characters`;
     } else {
       // FAIL
       isValid = false;
-      dispatch(slow(updateAccountUsernameInvalid(text)));
+      dispatch(slow(updateAccountPasswordInvalid(text)));
 
       const overMaxLength = text.length - maxLength;
       error = `${overMaxLength} over ${maxLength} characters`;
     }
 
-    // Update the component state
     this.setState({ text, isValid, error });
   }
   render() {
     const styles = inputStyles.textField;
     const { error } = this.state;
 
-    const isLogin = true;
-    const title = isLogin ? 'Username or Email' : 'Username';
-
+    const title = 'Password';
 
     return (
       <TextField
@@ -90,14 +88,14 @@ class accountUsername extends Component {
         floatingLabelFocusStyle={styles.floatingLabelFocus}
         underlineFocusStyle={styles.underlineStyle}
         errorStyle={styles.errorLabel}
-        onChange={this.handleChangedUsername}
+        onChange={this.handleChangedPassword}
       />
     );
   }
 }
 
-accountUsername.propTypes = {
+accountPassword.propTypes = {
   dispatch: PropTypes.func,
 };
 
-export default connect()(accountUsername);
+export default connect()(accountPassword);

@@ -18,7 +18,7 @@ export const tabStyles = {
 export const inputStyles = {
   container: {
     textAlign: 'center',
-    paddingTop: 16,
+    padding: '10px 0',
     margin: '0 12px',
   },
   textField: {
@@ -43,11 +43,11 @@ export const inputStyles = {
 
 export const regexes = {
   username: /^(?=.{8,20}$)(?![_.-])(?!.*[_.-]{2})[a-zA-Z0-9_-]+([^._-])$/,
-  usernameError: '8-20 Symbols: James_Bond_007 or James-Bond-007',
+  usernameError: 'James_Bond_007 or James-Bond-007',
   email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   emailError: 'Should be like: James.Bond@bss.gov',
-  password: /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{7,})\S$/,
-  passwordError: '1 Uppercase, 1 Lowercase, 1 Number, no spaces',
+  password: /^(?=.{12,32}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*/,
+  passwordError: '1 Uppercase, 1 Lowercase, 1 Number',
 };
 
 /**
