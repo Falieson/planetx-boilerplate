@@ -2,7 +2,6 @@ html,
 body {
   height: 100%;
   font-family: 'Roboto', sans-serif;
-  margin: 0 10px;
   background-color: rgb(34, 34, 34);
   color: rgb(245, 242, 233);
 }

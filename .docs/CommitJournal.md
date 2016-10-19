@@ -1,3 +1,6 @@
+# 3) Account Auth Tabs w/ Material-UI #
+Message: `3) Using Tabs component to create an Auth container`
+
 # 2) Responsive Layout and Material-UI #
 Message: `2) Material-UI and Responsive Grid Layout`
 Notes:

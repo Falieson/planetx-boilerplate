@@ -14,6 +14,7 @@ export default function layoutHeader() {
       margin: '5px 10px',
     },
     container: {
+      textAlign: 'center',
       margin: '0 0',
       padding: '10px 10px',
     },
@@ -22,10 +23,10 @@ export default function layoutHeader() {
   return (
     <Paper style={styles.container} zDepth={1}>
       <Row>
-        <Col xs="6" md="2" md-offset="8">
+        <Col xs="6" md="3" md-offset="6">
           <Link to="/" style={styles.links}>Visit Home Page</Link>
         </Col>
-        <Col xs="6" md="2">
+        <Col xs="6" md="3">
           <Link to="/profile" style={styles.links}>Visit Profile Page</Link>
         </Col>
       </Row>
