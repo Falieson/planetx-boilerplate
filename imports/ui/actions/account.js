@@ -52,15 +52,51 @@ export function updateAccountPassword(password) {
     dispatch(updatePassword(password));
   };
 }
-function invalidPassword() {
+function invalidPassword(password) {
   return {
     type: ACCOUNT_UPDATE_PASSWORD_INVALID,
+    password,
     valid: false,
     updatedAt: Date.now(),
   };
 }
-export function updateAccountPasswordInvalid() {
+export function updateAccountPasswordInvalid(password) {
   return (dispatch) => {
-    dispatch(invalidPassword());
+    dispatch(invalidPassword(password));
+  };
+}
+
+
+/**
+ * ACCOUNT_UPDATE_EMAIL & EMAIL_INVALID
+ * update the store with these states
+ */
+export const ACCOUNT_UPDATE_EMAIL = 'ACCOUNT_UPDATE_EMAIL';
+export const ACCOUNT_UPDATE_EMAIL_INVALID = 'ACCOUNT_UPDATE_EMAIL_INVALID';
+
+function updateEmail(email) {
+  return {
+    type: ACCOUNT_UPDATE_EMAIL,
+    email,
+    valid: true,
+    updatedAt: Date.now(),
+  };
+}
+export function updateAccountEmail(email) {
+  return (dispatch) => {
+    dispatch(updateEmail(email));
+  };
+}
+function invalidEmail(email) {
+  return {
+    type: ACCOUNT_UPDATE_EMAIL_INVALID,
+    email,
+    valid: false,
+    updatedAt: Date.now(),
+  };
+}
+export function updateAccountEmailInvalid(email) {
+  return (dispatch) => {
+    dispatch(invalidEmail(email));
   };
 }

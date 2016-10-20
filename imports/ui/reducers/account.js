@@ -1,5 +1,7 @@
 import {
   ACCOUNT_UPDATE_USERNAME, ACCOUNT_UPDATE_USERNAME_INVALID,
+  ACCOUNT_UPDATE_EMAIL, ACCOUNT_UPDATE_EMAIL_INVALID,
+  ACCOUNT_UPDATE_PASSWORD, ACCOUNT_UPDATE_PASSWORD_INVALID,
 } from '../actions/account';
 // ACCOUNT_UPDATE_EMAIL, ACCOUNT_UPDATE_PASSWORD,
 //  ACCOUNT_UPDATE_EMAIL_INVALID, ACCOUNT_UPDATE_PASSWORD_INVALID,
@@ -31,6 +33,34 @@ export default function Account(state = {
     return Object.assign({}, state, {
       username: action.username,
       usernameValid: action.valid,
+      lastUpdated: action.updatedAt,
+    });
+
+  case ACCOUNT_UPDATE_EMAIL:
+    return Object.assign({}, state, {
+      email: action.email,
+      emailValid: action.valid,
+      lastUpdated: action.updatedAt,
+    });
+
+  case ACCOUNT_UPDATE_EMAIL_INVALID:
+    return Object.assign({}, state, {
+      email: action.email,
+      emailValid: action.valid,
+      lastUpdated: action.updatedAt,
+    });
+
+  case ACCOUNT_UPDATE_PASSWORD:
+    return Object.assign({}, state, {
+      password: action.password,
+      passwordValid: action.valid,
+      lastUpdated: action.updatedAt,
+    });
+
+  case ACCOUNT_UPDATE_PASSWORD_INVALID:
+    return Object.assign({}, state, {
+      password: action.password,
+      passwordValid: action.valid,
       lastUpdated: action.updatedAt,
     });
 

@@ -42,6 +42,8 @@ class accountUsername extends Component {
         // SUCCESS
         //
         dispatch(slow(updateAccountUsername(text)));
+
+        error = '';
       } else {
         // FAIL
         dispatch(slow(updateAccountUsernameInvalid(text)));
@@ -75,8 +77,8 @@ class accountUsername extends Component {
   render() {
     const styles = inputStyles.textField;
     const { error } = this.state;
+    const { isLogin } = this.props;
 
-    const isLogin = true;
     const title = isLogin ? 'Username or Email' : 'Username';
 
 
@@ -98,6 +100,7 @@ class accountUsername extends Component {
 
 accountUsername.propTypes = {
   dispatch: PropTypes.func,
+  isLogin: PropTypes.bool,
 };
 
 export default connect()(accountUsername);

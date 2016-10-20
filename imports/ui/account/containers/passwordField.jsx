@@ -33,8 +33,6 @@ class accountPassword extends Component {
 
     const passwordLength = text.length >= minLength && text.length <= maxLength;
 
-    console.log('Length: ', text.length);
-
     if(passwordLength) {
       const regex = regexes.password;
       isValid = regex.test(text);
@@ -43,6 +41,8 @@ class accountPassword extends Component {
         // SUCCESS
         //
         dispatch(slow(updateAccountPassword(text)));
+
+        error = '';
       } else {
         // FAIL
         dispatch(slow(updateAccountPasswordInvalid(text)));

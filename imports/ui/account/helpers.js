@@ -44,7 +44,7 @@ export const inputStyles = {
 export const regexes = {
   username: /^(?=.{8,20}$)(?![_.-])(?!.*[_.-]{2})[a-zA-Z0-9_-]+([^._-])$/,
   usernameError: 'James_Bond_007 or James-Bond-007',
-  email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+  email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   emailError: 'Should be like: James.Bond@bss.gov',
   password: /^(?=.{12,32}$)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*/,
   passwordError: '1 Uppercase, 1 Lowercase, 1 Number',

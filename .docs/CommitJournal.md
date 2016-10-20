@@ -1,3 +1,10 @@
+# 6) Account Register and Email Field created - REDUX
+Message: `6) Register Tab and created Email Field, Everything REDUXing now`
+- A) `Separated account UI into components and containers`
+- B) `Reused username/password in Registration Tab`
+- C) `Added tab based propTypes to login/register component, and username/submit containers`
+- D) `FIXED: Redux for password wasn't added on the previous commit`
+
 # 5) Account Login Password Field and Submit Button - REDUX
 Message: `5) Create Password field and Validation as well as placeholder SubmitBtn`
 - A) `Submit Button doesn't do anything yet`

@@ -6,10 +6,10 @@ import Col from 'muicss/lib/react/col';
 
 // Components
 import Paper from 'material-ui/Paper';
-import { tabStyles, inputStyles } from './helpers';
-import Username from './username/';
-import Password from './password/';
-import Submit from './submit/';
+import { tabStyles, inputStyles } from '../helpers';
+import Username from '../containers/usernameField';
+import Password from '../containers/passwordField';
+import Submit from '../containers/submitButton';
 
 export default function accountLogin() {
   return (
@@ -17,9 +17,9 @@ export default function accountLogin() {
       <h2 style={tabStyles.headline}>Login</h2>
       <Row style={inputStyles.container}>
         <Col xs="12" md-offset="2" md="8">
-          <Username />
+          <Username isLogin />
           <Password />
-          <Submit />
+          <Submit isLogin />
         </Col>
       </Row>
     </Paper>

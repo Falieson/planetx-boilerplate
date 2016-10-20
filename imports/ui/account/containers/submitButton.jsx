@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 export default class SubmitBallotButton extends Component {
   render() {
-    const isLogin = true;
+    const { isLogin } = this.props;
     const title = isLogin ? 'Login' : 'Register Now!';
 
     const diabled = false;
@@ -19,4 +19,5 @@ export default class SubmitBallotButton extends Component {
 }
 
 SubmitBallotButton.propTypes = {
+  isLogin: PropTypes.bool,
 };
