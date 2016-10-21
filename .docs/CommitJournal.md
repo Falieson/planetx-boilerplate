@@ -1,3 +1,10 @@
+# 7) Account Register and Login Work
+Message: `7) Account Register and Login Work`
+- A) `Removed "slow" function because added value from props to the fields`
+- B) `SubmitButton enables when fields are valid`
+- C) `Password field now has a type to disguise the password being entered`
+- D) `Account Registration is validated server side before the account is created`
+
 # 6) Account Register and Email Field created - REDUX
 Message: `6) Register Tab and created Email Field, Everything REDUXing now`
 - A) `Separated account UI into components and containers`

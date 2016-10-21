@@ -16,7 +16,7 @@ export default function accountAuth() {
 
   return (
     <Col style={style} xs="12" md-offset="3" md="6">
-      <Tabs initialSelectedIndex={1}>
+      <Tabs initialSelectedIndex={0}>
         <Tab label="Login" >
           <Login />
         </Tab>

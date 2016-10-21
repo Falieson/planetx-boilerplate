@@ -33,11 +33,11 @@ class accountEmail extends Component {
     isValid = regex.test(text);
 
     if(isValid) {
-      dispatch(slow(updateAccountEmail(text)));
+      dispatch(updateAccountEmail(text));
 
       error = '';
     } else {
-      dispatch(slow(updateAccountEmailInvalid(text)));
+      dispatch(updateAccountEmailInvalid(text));
 
       error = regexes.emailError;
     }
@@ -53,6 +53,7 @@ class accountEmail extends Component {
 
     return (
       <TextField
+        value={this.props.email}
         style={styles.field}
         hintText={title}
         floatingLabelText={`${title} For Login/Recovery`}
@@ -71,4 +72,12 @@ accountEmail.propTypes = {
   dispatch: PropTypes.func,
 };
 
-export default connect()(accountEmail);
+function mapStoreToProps(store) {
+  const { Account } = store;
+
+  const { email } = Account || { email: '' };
+
+  return { email };
+}
+
+export default connect(mapStoreToProps)(accountEmail);

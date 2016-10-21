@@ -41,31 +41,31 @@ class accountUsername extends Component {
       if(isValid) {
         // SUCCESS
         //
-        dispatch(slow(updateAccountUsername(text)));
+        dispatch(updateAccountUsername(text));
 
         error = '';
       } else {
         // FAIL
-        dispatch(slow(updateAccountUsernameInvalid(text)));
+        dispatch(updateAccountUsernameInvalid(text));
 
         error = isEmail ? regexes.emailError : regexes.usernameError;
       }
     } else if(text.length === 0) {
       // FAIL
       isValid = false;
-      dispatch(slow(updateAccountUsernameInvalid(text)));
+      dispatch(updateAccountUsernameInvalid(text));
 
       error = '';
     } else if(text.length < minLength) {
       // FAIL
       isValid = false;
-      dispatch(slow(updateAccountUsernameInvalid(text)));
+      dispatch(updateAccountUsernameInvalid(text));
 
       error = `At least ${minLength} characters`;
     } else {
       // FAIL
       isValid = false;
-      dispatch(slow(updateAccountUsernameInvalid(text)));
+      dispatch(updateAccountUsernameInvalid(text));
 
       const overMaxLength = text.length - maxLength;
       error = `${overMaxLength} over ${maxLength} characters`;
@@ -84,6 +84,7 @@ class accountUsername extends Component {
 
     return (
       <TextField
+        value={this.props.username}
         style={styles.field}
         hintText={title}
         floatingLabelText={title}
@@ -103,4 +104,12 @@ accountUsername.propTypes = {
   isLogin: PropTypes.bool,
 };
 
-export default connect()(accountUsername);
+function mapStoreToProps(store) {
+  const { Account } = store;
+
+  const { username } = Account || { username: '' };
+
+  return { username };
+}
+
+export default connect(mapStoreToProps)(accountUsername);

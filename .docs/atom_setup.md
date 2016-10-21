@@ -14,6 +14,6 @@
 - [x] Collapse directories
 
 ## Plugin: Linter-Eslint ##
-- .eslintrc path: `/Users/{username}/Code/smartseries/connect/connect-htcweb/.eslintrc`
+- .eslintrc path: `/Users/{username}/Code/planetx-boilerplate/.eslintrc.js`
 
 - [x] Fix errors on save

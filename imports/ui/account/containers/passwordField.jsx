@@ -40,31 +40,31 @@ class accountPassword extends Component {
       if(isValid) {
         // SUCCESS
         //
-        dispatch(slow(updateAccountPassword(text)));
+        dispatch(updateAccountPassword(text));
 
         error = '';
       } else {
         // FAIL
-        dispatch(slow(updateAccountPasswordInvalid(text)));
+        dispatch(updateAccountPasswordInvalid(text));
 
         error = regexes.passwordError;
       }
     } else if(text.length === 0) {
       // FAIL
       isValid = false;
-      dispatch(slow(updateAccountPasswordInvalid(text)));
+      dispatch(updateAccountPasswordInvalid(text));
 
       error = '';
     } else if(text.length < minLength) {
       // FAIL
       isValid = false;
-      dispatch(slow(updateAccountPasswordInvalid(text)));
+      dispatch(updateAccountPasswordInvalid(text));
 
       error = `At least ${minLength} characters`;
     } else {
       // FAIL
       isValid = false;
-      dispatch(slow(updateAccountPasswordInvalid(text)));
+      dispatch(updateAccountPasswordInvalid(text));
 
       const overMaxLength = text.length - maxLength;
       error = `${overMaxLength} over ${maxLength} characters`;
@@ -80,6 +80,8 @@ class accountPassword extends Component {
 
     return (
       <TextField
+        value={this.props.password}
+        type="password"
         style={styles.field}
         hintText={title}
         floatingLabelText={title}
@@ -98,4 +100,12 @@ accountPassword.propTypes = {
   dispatch: PropTypes.func,
 };
 
-export default connect()(accountPassword);
+function mapStoreToProps(store) {
+  const { Account } = store;
+
+  const { password } = Account || { password: '' };
+
+  return { password };
+}
+
+export default connect(mapStoreToProps)(accountPassword);

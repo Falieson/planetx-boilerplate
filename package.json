@@ -10,6 +10,7 @@
   "dependencies": {
     "babel-polyfill": "^6.16.0",
     "babel-preset-es2017": "^6.16.0",
+    "bcrypt": "^0.8.7",
     "core-decorators": "^0.13.0",
     "lodash": "^4.16.4",
     "material-ui": "^0.16.0",

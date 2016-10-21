@@ -24,6 +24,9 @@ es5-shim@4.6.14_1               # ECMAScript 5 compatibility for older browsers.
 static-html
 webpack:webpack
 
+# Accounts
+accounts-password
+
 # React
 react-meteor-data
 webpack:react
@@ -32,3 +35,5 @@ webpack:less
 # Validation
 mdg:validated-method
 mdg:validation-error
+
+# Unsorted

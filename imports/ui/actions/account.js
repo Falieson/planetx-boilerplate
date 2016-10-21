@@ -100,3 +100,140 @@ export function updateAccountEmailInvalid(email) {
     dispatch(invalidEmail(email));
   };
 }
+
+
+/**
+ * ACCOUNT_CREATE_OPTIMIST & SUCCESS & ERROR
+ * update the store with these states
+ */
+import { Meteor } from 'meteor/meteor';
+import { newAccount } from '../../api/accounts/methods.js';
+
+export const ACCOUNT_CREATE_OPTIMIST = 'ACCOUNT_CREATE_OPTIMIST';
+export const ACCOUNT_CREATE_SUCCESS = 'ACCOUNT_CREATE_SUCCESS';
+export const ACCOUNT_CREATE_ERROR = 'ACCOUNT_CREATE_ERROR';
+
+function submitAccount(username) {
+  return {
+    type: ACCOUNT_CREATE_OPTIMIST,
+    updatedAt: Date.now(),
+    username,
+    error: {},
+    errorMessage: 'contacting server to save...',
+    savingOptimisticly: true,
+    saved: false,
+  };
+}
+function newAccountSaved(userId) {
+  return {
+    type: ACCOUNT_CREATE_SUCCESS,
+    updatedAt: Date.now(),
+    userId,
+    password: '',
+    error: {},
+    errorMessage: 'Your account has been created!',
+    savingOptimisticly: false,
+    saved: true,
+  };
+}
+function newAccountNotSaved(error, errorMessage) {
+  return {
+    type: ACCOUNT_CREATE_ERROR,
+    updatedAt: Date.now(),
+    error,
+    errorMessage,
+    savingOptimisticly: false,
+    saved: false,
+  };
+}
+export function submitNewAccount(user) {
+  return (dispatch) => {
+    const { username, email, password } = user;
+    dispatch(submitAccount(username));
+
+    newAccount.call({ username, email, password }, (error, result) => {
+      if(error) {
+        let message = '';
+        if(error.message && error.message.length > 0) {
+          message = error.message;
+        }
+        else {
+          message = 'check error field';
+        }
+        dispatch(newAccountNotSaved(error, message));
+      }
+
+      else {
+        const userId = result;
+        dispatch(newAccountSaved(userId));
+
+        // Server side account creation means explictely logging in on the client
+        Meteor.loginWithPassword(username, password);
+      }
+    });
+  };
+}
+
+
+/**
+ * ACCOUNT_LOGIN_OPTIMIST & SUCCESS & ERROR
+ * update the store with these states
+ */
+export const ACCOUNT_LOGIN_OPTIMIST = 'ACCOUNT_LOGIN_OPTIMIST';
+export const ACCOUNT_LOGIN_SUCCESS = 'ACCOUNT_LOGIN_SUCCESS';
+export const ACCOUNT_LOGIN_ERROR = 'ACCOUNT_LOGIN_ERROR';
+
+function submitLogin(username) {
+  return {
+    type: ACCOUNT_LOGIN_OPTIMIST,
+    updatedAt: Date.now(),
+    username,
+    error: {},
+    errorMessage: 'contacting server to save...',
+    savingOptimisticly: true,
+    saved: false,
+  };
+}
+function loginSuccesful(userId) {
+  return {
+    type: ACCOUNT_LOGIN_SUCCESS,
+    updatedAt: Date.now(),
+    userId,
+    password: '',
+    error: {},
+    errorMessage: 'Your account has been created!',
+    savingOptimisticly: false,
+    saved: true,
+  };
+}
+function loginNotSuccesful(error, errorMessage) {
+  return {
+    type: ACCOUNT_LOGIN_ERROR,
+    updatedAt: Date.now(),
+    error,
+    errorMessage,
+    savingOptimisticly: false,
+    saved: false,
+  };
+}
+export function submitAccountLogin(user) {
+  return (dispatch) => {
+    const { username, password } = user;
+    dispatch(submitLogin(username));
+
+    Meteor.loginWithPassword(username, password, (error) => {
+      if(error) {
+        let message = '';
+
+        if(error.message && error.message.length > 0) message = error.message;
+        else message = 'check error field';
+
+        dispatch(loginNotSuccesful(error, message));
+      } else {
+        const userId = Meteor.userId();
+
+        dispatch(loginSuccesful(userId));
+      }
+    });
+  };
+}
